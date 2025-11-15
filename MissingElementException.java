@@ -6,7 +6,8 @@
  */
 public class MissingElementException extends RuntimeException {
     /** default constructor */
-    public MissingElementException() {
+    public MissingElementException(String message) {
         super();
+        System.err.println(message);
     }
 }
