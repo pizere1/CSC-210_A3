@@ -78,17 +78,19 @@ public class SLL<T> implements Phase1SLL<T>, Phase2SLL<T> {
         if(this.isEmpty()){
            // System.out.println("Node not found");
             //return;
-            throw new MissingElementException();
-
+            throw new MissingElementException("The list is empty");
         }
         NodeSL<T> current=head;
         while((current!=here) && (current.getNext()!=null)){
             current=current.getNext();
-        }
+        }if((current!=here)&&(current.getNext()==null)){
+            throw new MissingElementException("The node" + here+"is not in the list");
+        }else{
         NodeSL<T> temp=current.getNext();
         NodeSL<T> newNode= new NodeSL<>(v,temp);
         current.setNext(newNode);
         this.size++;
+        }
     }
     /**
      *  Removes the given item from the head of the list
@@ -97,7 +99,7 @@ public class SLL<T> implements Phase1SLL<T>, Phase2SLL<T> {
     public T removeFirst(){
         if(this.isEmpty()){
             //return null;
-            throw new MissingElementException();
+            throw new MissingElementException("The list is empty");
         }
         NodeSL<T> current=this.head;
         this.head=this.head.getNext();
@@ -113,7 +115,7 @@ public class SLL<T> implements Phase1SLL<T>, Phase2SLL<T> {
     public T removeLast(){
         if(this.isEmpty()){
            // return null;
-            throw new MissingElementException();
+            throw new MissingElementException("The list is empty");
         }else if(this.head.getNext()==null){
             return this.removeFirst();
         }else{
@@ -134,17 +136,22 @@ public class SLL<T> implements Phase1SLL<T>, Phase2SLL<T> {
      *  @return item removed
      */
     public T removeAfter(NodeSL<T> here){
-        if(this.isEmpty()||here==null||this.head.getNext()==null){
+        if(this.isEmpty()){
             //return null;
-            throw new MissingElementException();
-        }else {
+            throw new MissingElementException("Can't remove an element from an empty list");
+        }else if(here==null){
+            throw new MissingElementException("Can't remove an null element from a list");
+        }else if(this.head.getNext()==null){
+            throw new MissingElementException("Can't remove a second element from a single element list");
+        }
+        else {
             T data;
             NodeSL<T> current=head;
             while((current!=here)&&(current.getNext()!=null)){
                 current=current.getNext();
             } if(current.getNext()==null){
                // return null;
-                throw  new MissingElementException();
+                throw  new MissingElementException("Can't remove an element after the last element");
             }
             data=current.getNext().getData();
             current.setNext(current.getNext().getNext());
@@ -156,10 +163,10 @@ public class SLL<T> implements Phase1SLL<T>, Phase2SLL<T> {
      *  Returns a count of the number of elements in the list
      *  @return current number of nodes
      */
-    public int size(){
-        if(this.isEmpty()){
+    public int size() {
+        if (this.isEmpty()) {
             return 0;
-        }else{
+        } else {
             return this.size;
         }
     }
