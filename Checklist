@@ -24,7 +24,7 @@ __Part__ 1 pt: Passes all phase 3 tests for singly linked list
 
 __YES__ 1 pt: Phase 4 methods implemented efficiently for singly linked list
 
-__No__ 1 pt: Passes all phase 4 tests for singly linked list
+__Yes__ 1 pt: Passes all phase 4 tests for singly linked list
 
 
 ## Kudos (Extra Challenge):
@@ -56,6 +56,6 @@ _____ 2 pt: Complies with style guidelines (missing items 1 pt each):
 
       __YES__ Methods avoid confusing side effects
 
-__PART__ 1 pt: All required files included with submission
+__YES__ 1 pt: All required files included with submission
 
 __YES__ 1 pt: readme.md contains reflection on the assignment
